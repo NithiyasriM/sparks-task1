@@ -1,0 +1,43 @@
+#The Sparks Foundation
+#Task 1 -prediction using supervised ML
+#Date:3/5/21
+#Author:Nithiyasri M
+
+#OBJECTIVE 
+#To Predict the score of the student by no.of hours they studied
+#And to find the score if the student study for 9.25 hrs/day.
+
+
+#load the Dataset
+
+data=read.csv("c:/grip/task.csv")
+print(data)
+
+#checking the missing values
+print(is.na(data))
+
+#summarize the data
+
+summary(data)
+
+#create relationship models
+library(stats)
+relation=lm(scores~Hours,data)
+print(relation)
+
+#summary of the relationship
+
+summary(relation)
+
+#predict the data for given value
+
+relation<-lm(scores~Hours,data)
+a=data.frame(Hours=9.25)
+result=predict(relation,a)
+print(result)
+
+#visuallising regression graphically
+#plot the chart
+plot(data,pch=10,col="blue",main="student_scores",cex=1,xlab="Hours in hr/day",ylab="Scores")
+abline(relation)
+
